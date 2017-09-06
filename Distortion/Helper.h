@@ -11,3 +11,4 @@ void pausing();
 void MainMenu(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string sibling, std::string sAge, bool &Secret, bool &Secret2);
 int diceRoll(int dice, int side);
 void DelayText(int millisec, char word[]);
+void Color(int color);
