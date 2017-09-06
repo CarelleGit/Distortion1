@@ -132,3 +132,76 @@ void Option(std::string & Name, std::string & gender, std::string & gender2, std
 	}
 
 }
+
+void iBattle(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string & sibling, std::string & sAge)
+{   
+	char user;
+	struct Stats
+	{
+		int HP;
+		int AP;
+		int DP;
+		int heal;
+	};
+	int numb;
+	Stats Player = { 0,0 };
+	Player.HP = diceRoll(3, 7);
+	Player.AP = diceRoll(2, 6);
+	Player.DP = diceRoll(1, 2);
+	Player.heal = diceRoll(2, 6);
+	Stats rescue = { 0,0 };
+	rescue.HP = diceRoll(3, 6);
+	rescue.AP = diceRoll(2, 6);
+	rescue.DP = diceRoll(1, 3);
+	bool inProg = true;
+	while (inProg)
+	{
+		cout << Name << "'s HP: " << Player.HP << "\n";
+		cout << "Rescue person's HP: " << rescue.HP << "\n\n";
+		cout << " 1: Eat   2: Attack\n\n";
+		cin >> user;
+		switch (user)
+		{
+		case '1':
+			numb = diceRoll(1, 2);
+			if (numb == 1)
+			{
+				cout << Name << " was not able to take a bite of " << gender2 << " food to help\n";
+			}
+			else
+			{
+				Player.HP = Player.HP + Player.heal;
+			}
+		default:
+		case '2':
+			Player.HP -= rescue.AP - Player.DP;
+			rescue.HP -= Player.AP - rescue.DP;
+			break;
+			cout << "\n";
+		}
+
+		inProg = Player.HP > 0 && rescue.HP > 0;
+	}
+
+	cout << "\n";
+	if (Player.HP > 0 && rescue.HP <= 0)
+	{
+		cout << " wins\n";
+		inProg = false;
+		if (inProg == false)
+		{
+			return;
+		}
+
+
+	}
+	else if (rescue.HP > 0 && Player.HP <= 0)
+	{
+		cout << " loses\n";
+		inProg = false;
+	}
+	if (inProg == false)
+	{
+		return;
+	}
+}

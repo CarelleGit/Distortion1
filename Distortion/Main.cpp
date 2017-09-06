@@ -13,5 +13,7 @@ int main()
 	std::string gender3;
 	std::string sibling;
 	std::string sAge;
-	MainMenu(Name, gender, gender2, gender3, sibling, sAge);
+	bool Secret = false;
+	bool Secret2 = false;
+	MainMenu(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
 }
