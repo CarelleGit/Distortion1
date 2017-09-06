@@ -143,9 +143,17 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 			DelayText(20, "1: The Pheonix:");
 			DelayText(19, "Inspired by a dream you go out and burn a forest down, not longer after you\nare greeted by a bird made of flames");
 			cout << "------------------------\n";
+			if (Secret == true)
+			{
+				cout << "true\n";
+			}
 			DelayText(20, "2: Island");
 			DelayText(19, "Stranded on an island whith your family but it's okay since there is plenty of\nfood and you can hear the ocean.");
 			cout << "------------------------\n";
+			if (Secret2 == true)
+			{
+				cout << "true\n";
+			}
 			cout << user << " is invalid\n";
 			break;
 		case '1':
