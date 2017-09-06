@@ -131,6 +131,8 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 	}
 	while (options == true)
 	{
+		cin >> user;
+		Clearing();
 		switch (user)
 		{
 		case 'b':
@@ -201,7 +203,6 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 				cout << user << " is invalid\n";
 			}
 		}
-
 	}
 
 
