@@ -39,7 +39,6 @@ void askInput(std::string & Name, std::string & gender, std::string & gender2, s
 	nameInput(Name);
 	Gender(gender, gender2, gender3);
 	cout << "\n";
-	pausing();
 
 }
 
@@ -119,7 +118,7 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 	Color(59);
 	DelayText(6, ".######..####..##..##.\n");
 	Color(11);
-	DelayText(10, "   ........................................");
+	DelayText(30, "   ........................................");
 	Color(27);
 	DelayText(19, "...............................\n");
 	Color(7);
@@ -158,11 +157,16 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 				Color(15);
 				cout << "Unlocked\n";
 			}
+			Color(7);
+			cout << "------------------------\n";
+			DelayText(20, "Not yet added\n");
+			cout << "------------------------\n";
+			DelayText(20, "Not yet added\n");
 			cout << "------------------------\n";
 			if (Secret == true && Secret2 == true)
 			{
 				Color(7);
-				DelayText(20, "3: Secret\n");
+				DelayText(20, "[S]ecret\n");
 				cout << "------------------------\n";
 			}
 			cout << "[B]ack to main menu\n";
@@ -174,7 +178,8 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 			break;
 		}
 	}
-	while (options == true)
+	bool menu = false;
+	while (options == true && menu == false)
 	{
 		cin >> user;
 		Clearing();
@@ -204,6 +209,11 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 				cout << "Unlocked\n";
 			}
 			cout << "------------------------\n";
+			cout << "------------------------\n";
+			DelayText(20, "Not yet added\n");
+			cout << "------------------------\n";
+			DelayText(20, "Not yet added\n");
+			cout << "------------------------\n";
 			cout << user << " is invalid\n";
 			break;
 		case '1':
@@ -228,84 +238,124 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 			Island(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
 			options = false;
 			break;
-		case '3':
+		case 's':
 			if (Secret == true && Secret2 == true)
 			{
-				cout << "Distortion\n";
-				DelayText(10, "Though the hallucinations,\n");
-				DelayText(10, "In a world made from my mind,\n");
-				DelayText(10, "We stand on our last foundations\n");
-				DelayText(10, "As we leave everything behind.\n");
-				cout << "\n\n";
-				DelayText(10, "Thinking everything is fine,\n");
-				DelayText(10, "believing nothing has happened,\n");
-				DelayText(10, "we slowly reach our deadline\n");
-				DelayText(10, "with chaotic laughing.\n");
-				cout << "\n\n";
-				DelayText(10, "I have eaten my family,\n");
-				DelayText(10, "I have burned down a forest,\n");
-				DelayText(10, "It was a catastrophe,\n");
-				DelayText(10, "My result was horrid.\n");
-				cout << "\n\n";
-				DelayText(10, "we will never wake\n");
-				DelayText(10, "leaving it as a mistake\n");
-				pausing();
-				MainMenu(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
+			bool menu = false;
+			PlaySound("Ominous-music-box.wav", NULL, SND_LOOP | SND_ASYNC);
+			cout << "Distortion\n";
+			Color(11);
+			DelayText(100, "Though the hallucinations,\n");
+			Color(14);
+			DelayText(100, "In a world made from my mind,\n");
+			Color(15);
+			DelayText(100, "We stand on our last foundations\n");
+			DelayText(100, "As we leave everything behind.\n");
+			cout << "\n\n";
+			Color(11);
+			DelayText(100, "Thinking everything is fine,\n");
+			Color(14);
+			DelayText(100, "believing nothing has happened,\n");
+			Color(15);
+			DelayText(100, "we slowly reach our deadline\n");
+			DelayText(100, "chaotically laughing.\n");
+			cout << "\n\n";
+			Color(11);
+			DelayText(100, "I have eaten my family,\n");
+			Color(14);
+			DelayText(100, "I have burned down a forest,\n");
+			Color(11);
+			DelayText(100, "It was a catastrophe,\n");
+			Color(14);
+			DelayText(100, "My result was horrid.\n");
+			cout << "\n\n";
+			Color(15);
+			DelayText(100, "we will never wake\n");
+			DelayText(100, "leaving it all as a mistake\n\n");
+			pausing();
+			Clearing();
+			Color(7);
+			DelayText(30, "1: Kuru\n");
+			DelayText(30, "2: back to menu\n");
+			while (options == true && menu == false)
+			{
+				cin >> user;
+				switch (user)
+				{
+				case '1':
+					Clearing();
+					Color(10);
+					DelayText(50, "\tKuru is fatel and rare, the highest prevalence was in 1950 and 1960 among the\n fore people of New Guinea.\n");
+					DelayText(50, "this disease is was obtained when the Fore people eat the dead as a uneral ritual\n");
+					DelayText(50, "\nThere are three stages to this disease\n");
+					DelayText(50, "\t\tThe first stage:\n\t\t\tLoss of bodliy control\n\t\t\tMaintaining posture\n");
+					DelayText(50, "\t\tThe second stage:\n\t\t\tUnable to walk\n\t\t\tBody tremors\n\t\t\tInvoluntary jerks and movement\n");
+					DelayText(50, "\t\tThe third stage:\n\t\t\tBedridden, incontinent\n\t\t\tUnable to speak\n\t\t\tDementia or behavor changes\n\t\t\tStarvation\n\t\t\tMalutrition\n");
+					DelayText(50, "Most people die in a year\n");
+					pausing();
+					menu = true;
+					MainMenu(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
+					break;
+				default:
+				case '2':
+					menu = true;
+					MainMenu(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
+					break;
+				}
+				if (menu == true)
+				{
+					return;
+				}
+			}
+			}
+			if (menu == true)
+			{
+				return;
 			}
 			else
 			{
-				Clearing();
-				Color(14);
-				DelayText(20, "1: The Pheonix:\n");
-				DelayText(19, "Inspired by a dream you go out and burn a forest down, not longer after you\nare greeted by a bird made of flames\n");
-				if (Secret == true)
-				{
-					Color(15);
-					cout << "Unlocked\n";
+			cout << user << " is invalid\n";
+			MainMenu(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
+			menu = true;
+			
+			break;
 				}
-				cout << "------------------------\n";
-				Color(11);
-				DelayText(20, "2: Island:\n");
-				DelayText(19, "Stranded on an island whith your family but it's okay since there is plenty of\nfood and you can hear the ocean.\n");
-				if (Secret == true)
-				{
-					Color(15);
-					cout << "Unlocked\n";
-				}
-				cout << "------------------------\n";
-				cout << user << " is invalid\n";
 			}
+		if (menu == true)
+		{
+			return;
 		}
+		}
+
+
 	}
 
-
-}
-
-int diceRoll(int dice, int side)
-{
-	int Return = 0;
-	for (int i = 0; i < dice; ++i)
+	int diceRoll(int dice, int side)
 	{
-		srand(time(NULL));
-		Return += rand() % side + 1;
+		int Return = 0;
+		for (int i = 0; i < dice; ++i)
+		{
+			srand(time(NULL));
+			Return += rand() % side + 1;
+		}
+
+
+		return Return;
 	}
 
-
-	return Return;
-}
-
-void DelayText(int millisec, char word[])
-{
+	void DelayText(int millisec, char word[])
+	{
 		for (int i = 0; i < strlen(word); i++)
 		{
 			cout << word[i];
 
 			Sleep(millisec);
 		}
-}
+	}
 
-void Color(int color)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
+	void Color(int color)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	}
+
 

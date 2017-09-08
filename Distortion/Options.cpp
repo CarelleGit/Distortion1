@@ -186,7 +186,7 @@ void iBattle(std::string & Name, std::string & gender, std::string & gender2, st
 	cout << "\n";
 	if (Player.HP > 0 && rescue.HP <= 0)
 	{
-		cout << " wins\n";
+		cout << Name << " starts eating away at the now dead person in front of " << gender2 << ". The pain increases. " << gender << " starts losing control of " << gender3 << "\n";
 		inProg = false;
 		if (inProg == false)
 		{
@@ -197,7 +197,7 @@ void iBattle(std::string & Name, std::string & gender, std::string & gender2, st
 	}
 	else if (rescue.HP > 0 && Player.HP <= 0)
 	{
-		cout << " loses\n";
+		cout << "The person manages to apprehend " << Name << " they take " << gender2 << " back to civilization to run a blood test and an MRI\n";
 		inProg = false;
 	}
 	if (inProg == false)
