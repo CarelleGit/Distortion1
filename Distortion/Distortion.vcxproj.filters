@@ -39,4 +39,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="HeartBeat.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="HeartMoniter.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Hospital.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Ocean.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Ominous-music-box.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Pback.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Silence.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="ForestFire.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

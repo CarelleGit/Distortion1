@@ -6,19 +6,65 @@
 #include <random>
 #include <cstdlib>
 #include <windows.h>
+#include <fstream>
 using std::cout;
 using std::cin;
 using std::string;
+using std::fstream;
+
+void Saveph(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3)
+{
+	fstream save;
+	string user;
+		cout << "Name of save?\n";
+		cin >> user;
+		//getline(cin, user);
+		user.append(".txt");
+		save.open(user, std::ios::out);
+		cin.ignore(1000, '\n');
+		save << "Name: ";
+		save << Name << "\n";
+		cin.ignore(1000, '\n');
+		save << "Pronoun: ";
+		save << gender << "\n";
+		cin.ignore(1000, '\n');
+		save << "Pronoun 2: ";
+		save << gender2 << "\n";
+		cin.ignore(1000, '\n');
+		save << "Pronoun 3: ";
+		save << gender3 << "\n";
+		cin.ignore(1000, '\n');
+		save.flush();
+		save.close();
+}
+
+void Loadph(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3)
+{
+	fstream load;
+	string file;
+	cin >> file;
+	file.append(".txt");
+	load.open(file);
+	if (load.fail())
+	{
+		cout << "Sorry that save does not exsit\n";
+		pausing();
+	}
+}
 
 void nameInput(std::string & UserInput)
 {
+	cout << "Name: ";
 	cin >> UserInput;
 }
 
 void Gender(std::string & Input1, std::string & Input2, std::string & Input3)
 {
+	cout << "she, he, they\n";
 	cin >> Input1;
+	cout << "her, his, their\n";
 	cin >> Input2;
+	cout << "herself, himself, themself\n";
 	cin >> Input3;
 }
 
@@ -30,16 +76,39 @@ void Sibling(std::string sibling, std::string sAge)
 
 void askInput(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3)
 {
-	cout << "                                 Enter name and then pronouns\n";
-	cout << "                                |++++++++++++++++++++++++++++|\n";
-	cout << "                                |Examples: she, her, herself |\n";
-	cout << "                                |           he, his, himself |\n";
-	cout << "                                |       they, their, themself|\n";
-	cout << "                                |++++++++++++++++++++++++++++|\n";
-	nameInput(Name);
-	Gender(gender, gender2, gender3);
-	cout << "\n";
-
+	char User = 0;
+	cout << "Would like to load a save?\n";
+	cout << "1: Yes            2: No\n";
+	cin >> User;
+	if (User == 1)
+	{
+		Loadph(Name, gender, gender2, gender3);
+	}
+	else if (User == 2)
+	{
+		cout << "Would you like to save this for The Phoenix?\n";
+		cout << "1: Yes                    2: No\n";
+		cin >> User;
+		switch (User)
+		{
+		default:
+		case '1':
+			nameInput(Name);
+			Gender(gender, gender2, gender3);
+			cout << "\n";
+			pausing();
+			Clearing();
+			Saveph(Name, gender, gender2, gender3);
+			break;
+		case '2':
+			nameInput(Name);
+			Gender(gender, gender2, gender3);
+			cout << "\n";
+			pausing();
+			Clearing();
+			break;
+		}
+	}
 }
 
 void sAskInput(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string & sibling, std::string & sAge)

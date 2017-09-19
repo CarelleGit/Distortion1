@@ -127,6 +127,32 @@
     <ClInclude Include="Options.h" />
     <ClInclude Include="Stories.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="ForestFire.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="HeartBeat.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="HeartMoniter.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="Hospital.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="Ocean.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="Ominous-music-box.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="Pback.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+    <Media Include="Silence.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
