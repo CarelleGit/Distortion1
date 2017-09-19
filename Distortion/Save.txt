@@ -1,4 +1,0 @@
-Name: Cala
-Pronoun: she
-Pronoun 2: her
-Pronoun 3: herself

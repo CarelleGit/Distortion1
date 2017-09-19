@@ -22,18 +22,10 @@ void Saveph(std::string & Name, std::string & gender, std::string & gender2, std
 		user.append(".txt");
 		save.open(user, std::ios::out);
 		cin.ignore(1000, '\n');
-		save << "Name: ";
 		save << Name << "\n";
-		cin.ignore(1000, '\n');
-		save << "Pronoun: ";
 		save << gender << "\n";
-		cin.ignore(1000, '\n');
-		save << "Pronoun 2: ";
 		save << gender2 << "\n";
-		cin.ignore(1000, '\n');
-		save << "Pronoun 3: ";
 		save << gender3 << "\n";
-		cin.ignore(1000, '\n');
 		save.flush();
 		save.close();
 }
@@ -42,6 +34,7 @@ void Loadph(std::string & Name, std::string & gender, std::string & gender2, std
 {
 	fstream load;
 	string file;
+	cout << "Name the file you want to load?\n";
 	cin >> file;
 	file.append(".txt");
 	load.open(file);
@@ -50,6 +43,56 @@ void Loadph(std::string & Name, std::string & gender, std::string & gender2, std
 		cout << "Sorry that save does not exsit\n";
 		pausing();
 	}
+	bool found = false;
+	load >> Name;
+	load >> gender;
+	load >> gender2;
+	load >> gender3;
+	load.close();
+}
+
+void saveis(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string & sibling, std::string & sAge)
+{
+	fstream save;
+	string user;
+	cout << "Name of save?\n";
+	cin >> user;
+	//getline(cin, user);
+	user.append(".txt");
+	save.open(user, std::ios::out);
+	cin.ignore(1000, '\n');
+	save << Name << "\n";
+	save << gender << "\n";
+	save << gender2 << "\n";
+	save << gender3 << "\n";
+	save << sibling << "\n";
+	save << sAge << "\n";
+	save.flush();
+	save.close();
+}
+
+void Loadis(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string & sibling, std::string & sAge)
+{
+	fstream load;
+	string file;
+	cout << "Name the file you want to load?\n";
+	cin >> file;
+	file.append(".txt");
+	load.open(file);
+	if (load.fail())
+	{
+		cout << "Sorry that save does not exsit\n";
+		pausing();
+	}
+	bool found = false;
+	load >> Name;
+	load >> gender;
+	load >> gender2;
+	load >> gender3;
+	load >> sibling;
+	load >> sAge;
+	load.close();
+
 }
 
 void nameInput(std::string & UserInput)
@@ -76,7 +119,7 @@ void Sibling(std::string sibling, std::string sAge)
 
 void askInput(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3)
 {
-	char User = 0;
+	int User = 0;
 	cout << "Would like to load a save?\n";
 	cout << "1: Yes            2: No\n";
 	cin >> User;
@@ -84,15 +127,18 @@ void askInput(std::string & Name, std::string & gender, std::string & gender2, s
 	{
 		Loadph(Name, gender, gender2, gender3);
 	}
-	else if (User == 2)
+	else
 	{
+		Clearing();
+		char Input;
 		cout << "Would you like to save this for The Phoenix?\n";
 		cout << "1: Yes                    2: No\n";
-		cin >> User;
-		switch (User)
+		cin >> Input;
+		switch (Input)
 		{
 		default:
 		case '1':
+			Clearing();
 			nameInput(Name);
 			Gender(gender, gender2, gender3);
 			cout << "\n";
@@ -101,6 +147,7 @@ void askInput(std::string & Name, std::string & gender, std::string & gender2, s
 			Saveph(Name, gender, gender2, gender3);
 			break;
 		case '2':
+			Clearing();
 			nameInput(Name);
 			Gender(gender, gender2, gender3);
 			cout << "\n";
@@ -151,6 +198,7 @@ void pausing()
 
 void MainMenu(std::string & Name, std::string & gender, std::string & gender2, std::string & gender3, std::string sibling, std::string sAge, bool &Secret, bool &Secret2)
 {
+	bool Load = false;
 	char user;
 	bool Exit = false;
 	Clearing();
@@ -287,11 +335,15 @@ void MainMenu(std::string & Name, std::string & gender, std::string & gender2, s
 			break;
 		case '1':
 			Color(14);
+			if (Load == true)
+			{
+				
+			}
 			askInput(Name, gender, gender2, gender3);
 			Clearing();
-			cout << "                                    Name   : " << Name << "\n";
 			cout << "                                    Pronoun: " << gender << ", " << gender2 << ", " << gender3 << "\n";
-			pausing();
+			cout << "                                       Name: " << Name << "\n";
+			pausing(); 
 			ThePhoenix(Name, gender, gender2, gender3, sibling, sAge, Secret, Secret2);
 			options = false;
 			break;
